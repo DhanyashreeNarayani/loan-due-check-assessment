@@ -5,10 +5,7 @@ const customerSchema = new mongoose.Schema({
     type: String,
   },
   location: {
-    type: 'Point',
-    coordinates: [{
-      type: Number,
-    }],
+    type: String,
   },
   amount: {
     type: Number,

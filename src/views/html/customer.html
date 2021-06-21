@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .flex-container{
+            display: flex;
+            flex-flow: column;
+            padding-left: 20%;
+        }
+input, select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: green;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+    <div class = 'flex-container'>
+        <div class = 'flex-element'>
+            <button class = 'button-secondary' id ='myBtn'>Create User</button>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+             <!-- Modal content -->
+             <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Username">
+                
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="location">
+
+                    <label for="mobileno">Mobile No</label>
+                    <input type="text" id="mobileno" name="mobileno" placeholder="mobileno">
+
+                    <label for="amount">Loan Amount</label>
+                    <input type="number" id="amount" name="amount" placeholder="amount">
+
+                    <label for="addtional_amount">Addtional Charges</label>
+                    <input type="number" id="addtional_amount" name="addtional_amount" placeholder="addtional_amount">
+                  
+                    <input type="submit" value="Submit">
+                  </form>
+             </div>
+            </div>
+
+
+  
+        </div>
+        <div  class = 'flex-element'>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Location</th>
+                        <th>Amount</th>
+                        <th>Mobile Number</th>
+                        <th>Addtional Charges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                        <td>Dhanya</td>
+                        <td>Chennai</td>
+                        <td>10,000</td>
+                        <td>+2345324</td>
+                        <td>0</td>               
+                    </tr>
+                   <tr>
+                        <td>Shree</td>
+                        <td>Kolkata</td>
+                        <td>10,000</td>
+                        <td>+12445324</td>
+                        <td>0</td>     
+    
+                    </tr>
+                    <tr>
+                        <td>Narayani</td>
+                        <td>Bangalore</td>
+                        <td>10,000</td>
+                        <td>+23524</td>
+                        <td>9</td>     
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+</body>
+</html>
