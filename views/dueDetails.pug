@@ -1,0 +1,183 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='../css/common.css')
+  style.
+    * {
+    font-family: sans-serif;
+    font-size: 16px;
+    }
+    .button {
+    border: solid green;
+    background-color: white;
+    color: green;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 250px;
+    }
+    .button:hover {
+    border: solid green;
+    background-color: green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 250px;
+    }
+    .button-secondary {
+    border: solid green;
+    background-color: green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    .button-secondary:hover {
+    border: solid green;
+    background-color: white;
+    color: green;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    }
+    /* The Close Button */
+    .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 400px;
+    border: 1px solid #968a8a;
+    }
+    .styled-table thead tr {
+    background-color: green;
+    color: #ffffff;
+    text-align: left;
+    }
+    .styled-table th,
+    .styled-table td {
+    padding: 12px 15px;
+    }
+    .styled-table tbody tr {
+    border-bottom: 1px solid #968a8a;
+    }
+    .flex-container{
+    display: flex;
+    flex-flow: column;
+    padding-left: 20%;
+    }
+    input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    }
+    input[type=submit] {
+    width: 100%;
+    background-color: green;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+    input[type=submit]:hover {
+    background-color: #45a049;
+    }
+.flex-container
+  .flex-element
+    button#myBtn.button-secondary Add due details
+    // The Modal
+    #myModal.modal
+      // Modal content
+      .modal-content
+        span.close &times;
+        form(action='http://localhost:3000/dueDetails' method='post' name='postduedetails')
+          label(for='username') Username
+          input#username(type='text' name='username' placeholder='Username')
+          label(for='dueAmount') Due Amount
+          input#dueamount(type='number' name='dueAmount' placeholder='dueAmount')
+          label(for='dueDateOfTheMonth') Date of payment
+          input#duedate(type='number' name='dueDateOfTheMonth' placeholder='dueDateOfTheMonth')
+          input(type='submit' value='Upsert')
+  .flex-element
+    table.styled-table
+      thead
+        tr
+          th Username
+          th Due Amount
+          th Date of payment
+      tbody
+        each user in users
+          tr
+            td= user.username
+            td= user.dueAmount
+            td= user.dueDateOfTheMonth
+script.
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+  modal.style.display = "block";
+  }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+  modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+  if (event.target == modal) {
+  modal.style.display = "none";
+  }
+  }

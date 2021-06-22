@@ -1,34 +1,33 @@
-const dueDateModel = require('../models/dueDetails');
 const moment = require('moment');
+const dueDateModel = require('../models/dueDetails');
+
 const service = {};
 
 service.getDueCost = async (username, date) => {
-
     const dueDetails = await dueDateModel.findOne({
-            username
+        username,
     }).lean().exec();
-
     const currentDate = moment(date);
-    const dueDateOfTheMonth = moment().day(dueDetails.dueDateOfTheMonth);
-    const dateDifference = currentDate.diff(dueDateOfTheMonth,'d');
-    if(dateDifference<=0){
+    const dueDateOfTheMonth = moment().set('date', dueDetails.dueDateOfTheMonth);
+    const dateDifference = currentDate.diff(dueDateOfTheMonth, 'd');
+    if (dateDifference <= 0) {
         return dueDetails.dueAmount;
     }
 
+    return dueDetails.dueAmount + dateDifference * 25;
+};
 
-    return dueDetails.dueAmount;
-}
-
-
-service.upsertDueDate = (username,dueAmount,dueDateOfTheMonth) => dueDateModel.updateOne({username},{
-    $set:{
+service.upsertDueDate = (username, dueAmount, dueDateOfTheMonth) => dueDateModel.updateOne(
+    { username }, {
+    $set: {
         username,
         dueAmount,
-        dueDateOfTheMonth
-    }
-},{
-    upsert: true
-});
+        dueDateOfTheMonth,
+    },
+}, {
+    upsert: true,
+},
+);
 
 service.getDueDetailsByUsername = () => dueDateModel.find({}).lean().exec();
 
