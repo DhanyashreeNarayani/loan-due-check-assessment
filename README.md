@@ -1,4 +1,4 @@
-# stucred-test-repo
+# Loan Due Check
 Application serving webpages and handling mongodb database requests- Nodejs and Jade
 
 #### Features
